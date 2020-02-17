@@ -174,4 +174,67 @@ class LoanController extends Controller
         Session::flash('alert-class', 'alert-success');
         return redirect('/loan');
     }
+
+    public function search(Request $request)
+    {
+        $loans = Loan::orderBy('created_at', 'asc');
+        if ($request->input('minAmount') || $request->input('maxAmount')) {
+            if ($request->input('maxAmount') < $request->input('minAmount')) {
+                Session::flash('message', 'Max amount must be more than Min amount.');
+                Session::flash('alert-class', 'alert-success');
+                return redirect('/loan');
+            }
+            if ($request->input('minAmount') && $request->input('maxAmount')) {
+                $minAmount = $request->input('minAmount');
+                $maxAmount = $request->input('maxAmount');
+                $loans = $loans->whereBetween('amount', [$minAmount, $maxAmount]);
+            } else {
+                Session::flash('message', 'Min amount or Max amount is empty.');
+                Session::flash('alert-class', 'alert-success');
+                return redirect('/loan');
+            }
+        }
+        if ($request->input('minRate') && $request->input('maxRate')) {
+            if ($request->input('maxRate') < $request->input('minRate')) {
+                Session::flash('message', 'Max rate must be more than Min rate.');
+                Session::flash('alert-class', 'alert-success');
+                return redirect('/loan');
+            }
+            if ($request->input('minRate') && $request->input('maxRate')) {
+                $minRate = $request->input('minRate');
+                $maxRate = $request->input('maxRate');
+                $loans = $loans->whereBetween('interest_rate', [$minRate, $maxRate]);
+            } else {
+                Session::flash('message', 'Min rate or Max rate is empty.');
+                Session::flash('alert-class', 'alert-success');
+                return redirect('/loan');
+            }
+        }
+        if ($request->input('minTerm') && $request->input('maxTerm')) {
+            if ($request->input('maxTerm') < $request->input('minTerm')) {
+                Session::flash('message', 'Max term must be more than Min term.');
+                Session::flash('alert-class', 'alert-success');
+                return redirect('/loan');
+            }
+            if ($request->input('minTerm') && $request->input('maxTerm')) {
+                $minTerm = $request->input('minTerm');
+                $maxTerm = $request->input('maxTerm');
+                $loans = $loans->whereBetween('term', [$minTerm, $maxTerm]);
+            } else {
+                Session::flash('message', 'Min term or Max term is empty.');
+                Session::flash('alert-class', 'alert-success');
+                return redirect('/loan');
+            }
+        }
+        $loans = $loans->get();
+        return view('loan.search', [
+            'loans' => $loans,
+            'minAmount' => $request->input('minAmount'),
+            'maxAmount' => $request->input('maxAmount'),
+            'minRate' => $request->input('minRate'),
+            'maxRate' => $request->input('maxRate'),
+            'minTerm' => $request->input('minTerm'),
+            'maxTerm' => $request->input('maxTerm'),
+        ]);
+    }
 }

@@ -52,13 +52,13 @@
                                                                 <div class="col-md-2">
                                                                     <input type="number" name="minAmount" min="1000"
                                                                         max="100000000" class="form-control"
-                                                                        placeholder="10000">
+                                                                        placeholder="10000" value="{{$minAmount}}">
                                                                 </div>
                                                                 <label class="col-md-2 control-label">Max:</label>
                                                                 <div class="col-md-2">
                                                                     <input type="number" name="maxAmount" min="1000"
                                                                         max="100000000" class="form-control"
-                                                                        placeholder="100000000">
+                                                                        placeholder="100000000" value="{{$maxAmount}}">
                                                                 </div>
                                                             </div>
                                                             <p class="col-md-12">Interest Rate(%)</p>
@@ -66,13 +66,14 @@
                                                                 <label class="col-md-2 control-label">Min:</label>
                                                                 <div class="col-md-2">
                                                                     <input type="number" name="minRate" min="1"
-                                                                        max="100" class="form-control" placeholder="1">
+                                                                        max="100" class="form-control" placeholder="1"
+                                                                        value="{{$minRate}}">
                                                                 </div>
                                                                 <label class="col-md-2 control-label">Max:</label>
                                                                 <div class="col-md-2">
                                                                     <input type="number" name="maxRate" min="1"
-                                                                        max="100" class="form-control"
-                                                                        placeholder="100">
+                                                                        max="100" class="form-control" placeholder="100"
+                                                                        value="{{$maxRate}}">
                                                                 </div>
                                                             </div>
                                                             <p class="col-md-12">Loan Term</p>
@@ -80,12 +81,14 @@
                                                                 <label class="col-md-2 control-label">Min:</label>
                                                                 <div class="col-md-2">
                                                                     <input type="number" name="minTerm" min="1" max="50"
-                                                                        class="form-control" placeholder="1">
+                                                                        class="form-control" placeholder="1"
+                                                                        value="{{$minTerm}}">
                                                                 </div>
                                                                 <label class="col-md-2 control-label">Max:</label>
                                                                 <div class="col-md-2">
                                                                     <input type="number" name="maxTerm" min="1" max="50"
-                                                                        class="form-control" placeholder="50">
+                                                                        class="form-control" placeholder="50"
+                                                                        value="{{$maxTerm}}">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -160,7 +163,6 @@
                                                         @endif
                                                     </tbody>
                                                 </table>
-                                                {{$loans->links()}}
                                             </div>
                                         </div>
                                     </div>

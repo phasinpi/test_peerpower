@@ -15,4 +15,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::post('/loan/search', 'LoanController@search');
 Route::resource('/loan', 'LoanController');
