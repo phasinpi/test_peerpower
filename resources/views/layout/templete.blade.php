@@ -138,11 +138,7 @@
                 <!-- BEGIN FOOTER -->
                 <!-- BEGIN INNER FOOTER -->
                 <div class="page-footer">
-                    <div class="container"> ภาควิชาเทคโนโลยีการศึกษา คณะศึกษาศาสตร์
-                        มหาวิทยาลัยเกษตรศาสตร์
-                        50 ถ.งามวงศ์วาน แขวงลาดยาว
-                        เขตจตุจักร กทม. 10900
-                        โทร. 02-942-8674
+                    <div class="container"> PeerPower Test
                     </div>
                 </div>
                 <div class="scroll-to-top">
